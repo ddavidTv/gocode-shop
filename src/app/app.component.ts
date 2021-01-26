@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PRODUCTS } from './products';
 
 @Component({
   selector: 'app-root',
@@ -6,12 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title: string = 'Tour of Heroes';
-  onSave(): void {
-    alert("Saved!");
-  }
-
-  onToggle() {
-    this.title = this.title ? '' : 'Tour of Heros';
-  }
+  
+  products = PRODUCTS;
+  
 }
