@@ -9,7 +9,6 @@ import { PRODUCTS } from './products';
 import { SORTINGYPES } from './sortingTypes';
 import { FILTERINGTYPES } from './filteringTypes';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -17,15 +16,14 @@ import { FILTERINGTYPES } from './filteringTypes';
 })
 export class AppComponent {
 
-  title: string = "GoCode Shop";
+  readonly title: string = "GoCode Shop";
 
   products: IProduct[] = PRODUCTS;
-  afterFilterProducts: IProduct[] = [...PRODUCTS];
-  afterFilterProductsBackUp: IProduct[] = [];
-
   sortingTypes: ISelection[] = SORTINGYPES;
   filteringTypes: ISelection[] = FILTERINGTYPES;
 
+  private afterFilterProducts: IProduct[] = [...PRODUCTS];
+  private afterFilterProductsBackUp: IProduct[] = [];
   filterCatalogBy(event: any) {
 
     const filterBy = event.target.value;
