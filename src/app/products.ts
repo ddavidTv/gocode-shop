@@ -1,6 +1,6 @@
 import { IProduct } from "./IProduct";
 
-export let PRODUCTS: IProduct[] = [
+export const PRODUCTS: IProduct[] = [
     {
         "id": 1,
         "title": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
