@@ -24,6 +24,8 @@ export class AppComponent {
 
   private afterFilterProducts: IProduct[] = [...PRODUCTS];
   private afterFilterProductsBackUp: IProduct[] = [];
+
+  
   filterCatalogBy(event: any) {
 
     const filterBy = event.target.value;
