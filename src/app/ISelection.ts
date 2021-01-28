@@ -1,4 +1,4 @@
-export interface ISelection{
+export interface ISelection {
     title: string;
     value: string;
 }

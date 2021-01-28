@@ -25,7 +25,7 @@ export class AppComponent {
   private afterFilterProducts: IProduct[] = [...PRODUCTS];
   private afterFilterProductsBackUp: IProduct[] = [];
 
-  
+
   filterCatalogBy(event: any) {
 
     const filterBy = event.target.value;
@@ -41,20 +41,16 @@ export class AppComponent {
         this.afterFilterProductsBackUp = [...this.afterFilterProducts];
         break;
     }
-    this.products = this.afterFilterProducts; 
+    this.products = this.afterFilterProducts;
 
   }
 
   sortCatalogBy(event: any) {
-
     const sortBy = event.target.value;
-
     switch (sortBy) {
-
       case " ":
         this.products = this.afterFilterProductsBackUp;
         break;
-
       case "alphabeticallyAtoZ":
         this.afterFilterProducts.sort(function (product1, product2) {
           let p1: string = product1.title.toLowerCase();
@@ -87,12 +83,8 @@ export class AppComponent {
         });
         this.products = this.afterFilterProducts;
         break;
-
     }
 
-
-
   }
-
 
 }
