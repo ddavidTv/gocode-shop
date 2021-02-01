@@ -25,10 +25,6 @@ export class AppComponent {
   private afterFilterProducts: IProduct[] = [...PRODUCTS];
   private afterFilterProductsBackUp: IProduct[] = [];
 
-  ngOnInit() {
-    console.log(PRODUCTS);
-  }
-
   filterCatalogBy(event: Event) {
     const sortedBy = (<HTMLInputElement>document.getElementById("sortBy"));
     const filterBy = (<HTMLInputElement>event.target).value;
