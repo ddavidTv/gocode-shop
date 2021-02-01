@@ -4,7 +4,7 @@
 
     <div class="collection-sort">
       <label>Filter by:</label>
-      <select (change)="filterCatalogBy($event)">
+      <select (change)="filterCatalogBy($event)" id="filterBy">
         <option *ngFor="let filteringType of filteringTypes" [value]="filteringType.value">{{filteringType.title}}
         </option>
       </select>
@@ -12,7 +12,7 @@
 
     <div class="collection-sort">
       <label>Sort by:</label>
-      <select (change)="sortCatalogBy($event)">
+      <select (change)="sortCatalogBy($event)" id="sortBy">
         <option *ngFor="let sortingType of sortingTypes" [value]="sortingType.value">{{sortingType.title}}</option>
       </select>
     </div>
