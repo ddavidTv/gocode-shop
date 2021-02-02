@@ -6,7 +6,7 @@
     "start": "ng serve --hmr --open ",
     "build": "ng build",
     "deploy": "npm run deploy_part1 && npm run deploy_part2",
-    "deploy_part1": "git init && git add . && git remote set-url origin https://github.com/ddavidTv/gocode-shop-ex2.git",
+    "deploy_part1": "git init && git add . && git commit -m \"initial commit\" && git remote set-url origin https://github.com/ddavidTv/gocode-shop-ex2.git",
     "deploy_part2": "git push -u origin master && ng build --prod --output-path docs --base-href /gocode-shop-ex2/",
     "test": "ng test",
     "lint": "ng lint",
