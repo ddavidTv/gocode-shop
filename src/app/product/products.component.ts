@@ -1,8 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FILTERINGTYPES } from '../filteringTypes';
 import { IProduct } from '../IProduct';
-import { ISelection } from '../ISelection';
-import { PRODUCTS } from '../products';
 
 @Component({
   selector: 'app-products',
