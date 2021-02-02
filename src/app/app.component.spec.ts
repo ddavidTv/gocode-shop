@@ -20,10 +20,10 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'gocode-shop-ex2'`, () => {
+  it(`should have as title 'gocode-shop'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('gocode-shop-ex2');
+    expect(app.title).toEqual('gocode-shop');
   });
 
   it('should render title', () => {

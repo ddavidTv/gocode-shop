@@ -1,4 +1,4 @@
-<nav class="product-filter">
+<!-- <nav class="product-filter">
   <h1><b>{{title}}</b></h1>
   <div class="sort">
     <div class="collection-sort">
@@ -17,18 +17,7 @@
     </div>
 
   </div>
-</nav>
+</nav> -->
 
-<section class="products">
 
-  <div class="product-card" *ngFor="let product of products">
-    <div class="product-image">
-      <img [src]=product.image />
-    </div>
-    <div class="product-info">
-      <h5>{{product.title}}</h5>
-      <h6>{{product.price}} $</h6>
-    </div>
-  </div>
-
-</section>
+<app-filter-products></app-filter-products>
