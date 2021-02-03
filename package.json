@@ -5,10 +5,10 @@
     "ng": "ng",
     "start": "ng serve --hmr --open ",
     "build": "ng build --prod",
+    "deploy": "ng deploy --base-href=/gocode-shop/",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "deploy": "ng deploy --base-href=/gocode-shop/"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
