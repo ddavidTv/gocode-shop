@@ -12,55 +12,55 @@ import { SORTINGYPES } from '../sortingTypes';
 export class FilterProductsComponent implements OnInit {
 
   private products: IProduct[] = PRODUCTS;
-
+  filteredOrSortedProducts: IProduct[] = [...PRODUCTS];
   filteringTypes: string[] = [];
-  @Output() filteredOrSortedProducts: IProduct[] = [...PRODUCTS];
 
   sortingTypes: ISelection[] = SORTINGYPES;
   private beforeSortedProducts: IProduct[] = [];
 
-  selectedCategory: string = "";
+  selectedFilterCategory: string = "";
+  selectedSortCategory: string = "";
 
   constructor() { }
 
   ngOnInit(): void {
+
     this.filteringTypes = Object.keys(this.groupBy(this.products, 'category'));
     this.filteringTypes.unshift("");
+
   }
 
-  filterCatalogBy(category: Event): void {
+  filterCatalogBy = (category: Event): void => {
 
-    const sortedBy = (<HTMLInputElement>document.getElementById("filterBy")).value;
-    const filteredBy = (<HTMLInputElement>category.target).value;
+    this.selectedFilterCategory = (<HTMLInputElement>category.target).value;
+    let filteredBy = this.selectedFilterCategory;
 
-    switch (filteredBy) {
+    switch (this.selectedFilterCategory) {
       case "":
-        if (sortedBy === "")
-          this.filteredOrSortedProducts = [...PRODUCTS];
+        this.filteredOrSortedProducts = [...this.products];
+        if (this.selectedSortCategory !== "")
+          this.sortProducts(this.selectedSortCategory);
         break;
       default:
-        if (sortedBy === "")
-          this.beforeSortedProducts = [...this.filteredOrSortedProducts];
-        else {
-          this.filteredOrSortedProducts = PRODUCTS.filter(function (product) {
-            return product.category === filteredBy;
-          });
-          this.beforeSortedProducts = [...this.filteredOrSortedProducts];
-        }
+        this.filteredOrSortedProducts = PRODUCTS.filter(function (product) {
+          return product.category === filteredBy;
+        });
+        this.beforeSortedProducts = [...this.filteredOrSortedProducts];
         break;
     }
+  };
 
-  }
+  sortCatalogBy = (event: Event): void => {
+    this.selectedSortCategory = (<HTMLInputElement>event.target).value;
+    this.sortProducts(this.selectedSortCategory);
+  };
 
-  sortCatalogBy(event: Event) {
+  sortProducts = (sortCategory: string): void => {
 
-    const filteredBy = (<HTMLInputElement>document.getElementById("filterBy")).value;
-    const sortBy = (<HTMLInputElement>event.target).value;
-
-    if (filteredBy === "")
-      this.filteredOrSortedProducts = [...this.products];
-
-    switch (sortBy) {
+    switch (sortCategory) {
+      case "":
+        this.filteredOrSortedProducts = (this.selectedFilterCategory === "") ? [...PRODUCTS] : [...this.beforeSortedProducts];
+        break;
       case "alphabeticallyAtoZ":
         this.filteredOrSortedProducts.sort(function (product1, product2) {
           let p1: string = product1.title.toLowerCase();
@@ -107,14 +107,13 @@ export class FilterProductsComponent implements OnInit {
           let p2: Date = new Date(product2.addedDate);
           return (p1 < p2) ? 1 : (p1 > p2) ? -1 : 0;
         });
-
         break;
     }
 
-  }
+  };
 
-  groupBy = (xs: IProduct[], key: string) => xs.reduce((rv: any, x: any) => {
-    (rv[x[key]] = true || []);
+  groupBy = (xs: IProduct[], key: string): IProduct[] => xs.reduce((rv: any, x: any) => {
+    (rv[x[key]] = rv[x[key]] || []);
     return rv;
   }, {});
 
